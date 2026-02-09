@@ -1,12 +1,7 @@
-from urllib import request
 from django.shortcuts import render
-from django.http import HttpResponse
 from .models import Movie
-# Create your views here.
+
 def home(request):
-    #return HttpResponse("<h1>Welcome to the Movie Reviews Home Page</h1>")
-    #return render(request, 'home.html')
-    #return render(request, 'home.html', {'name': 'Julian Jimenez'})
     searchTerm = request.GET.get('searchMovie')
 
     if searchTerm:
@@ -18,10 +13,11 @@ def home(request):
         request,
         'home.html',
         {
+            'name': 'Julian Jimenez',
             'searchTerm': searchTerm,
             'movies': movies
         }
     )
+
 def about(request):
-    return HttpResponse("<h1>Welcome to the About Page</h1>")
     return render(request, 'about.html')
